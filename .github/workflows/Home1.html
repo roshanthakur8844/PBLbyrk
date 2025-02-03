@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Helping System - Home</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: 0.4s ease-in-out;
+        }
+
+        /* Body Default (Dark Mode) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(to right, #1e1e2e, #2a2a40);
+            color: white;
+        }
+
+        /* Background Animation */
+        .floating {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 6s infinite alternate ease-in-out;
+        }
+
+        .floating:nth-child(1) { top: 20%; left: 10%; animation-duration: 8s; }
+        .floating:nth-child(2) { top: 60%; left: 30%; animation-duration: 5s; }
+        .floating:nth-child(3) { top: 80%; left: 70%; animation-duration: 7s; }
+        .floating:nth-child(4) { top: 30%; left: 90%; animation-duration: 6s; }
+
+        @keyframes float {
+            from { transform: translateY(0); opacity: 0.3; }
+            to { transform: translateY(-30px); opacity: 0.8; }
+        }
+
+        /* Title */
+        h1 {
+            font-size: 42px;
+            text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.8);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Button Styling */
+        .btn {
+            background: linear-gradient(90deg, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            margin: 20px;
+            font-size: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 118, 136, 0.5);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(255, 118, 136, 0.8);
+        }
+
+        /* Community Section */
+        .community {
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        /* Dark Mode & Light Mode */
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background: linear-gradient(to right, #f8f9fa, #e2e3e5);
+            color: black;
+        }
+
+        body.light-mode .btn {
+            background: linear-gradient(90deg, #ff7eb3, #ff758c);
+            color: white;
+        }
+
+        body.light-mode .toggle-btn {
+            background: rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+
+        body.light-mode .floating {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .community {
+            background: rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Elements for Animation -->
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+
+    <!-- Theme Toggle Button -->
+    <button class="toggle-btn" onclick="toggleTheme()">🌗 Toggle Theme</button>
+
+    <!-- Page Content -->
+    <h1>Welcome to Teacher Helping System</h1>
+    <button class="btn" onclick="window.location.href='https://roshanthakur8844.github.io/PBLbyrk2/Login.html'">Start</button>
+
+    <!-- Community Section -->
+    <div class="community">
+        <p>Join our platform to simplify your teaching tasks.<br>Manage your work easily & efficiently.</p>
+    </div>
+
+    <!-- JavaScript for Theme Toggle -->
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const isLightMode = document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+        }
+
+        // Load User's Theme Preference
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+            }
+        };
+    </script>
+
+</body>
+</html>
